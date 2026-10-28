@@ -62,6 +62,8 @@ public class Module2Controller : BaseModule
         for (int i = 0; i < courses.Length; i++) courseScale[i] = courses[i].transform.localScale;
         routerScale = new Vector3[routers.Length];
         for (int i = 0; i < routers.Length; i++) routerScale[i] = routers[i].localScale;
+
+
     }
 
     public override void ResetModule()
