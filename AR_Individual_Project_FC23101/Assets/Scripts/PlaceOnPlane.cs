@@ -3,6 +3,7 @@ using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
+using UnityEngine.EventSystems;
 
 public class PlaceOnPlane : MonoBehaviour
 {
@@ -30,6 +31,11 @@ public class PlaceOnPlane : MonoBehaviour
 
         Vector2 touchPosition =
         Touchscreen.current.primaryTouch.position.ReadValue();
+
+        if(EventSystem.current != null && EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+        {
+            return;
+        }
 
         if (raycastManager.Raycast(
         touchPosition,
