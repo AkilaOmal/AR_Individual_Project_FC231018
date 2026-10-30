@@ -982,14 +982,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Module1Controller, Assembly-CSharp
-        m_MethodName: OnEnableLoadBalancer
-        m_Mode: 1
+      - m_Target: {fileID: 589909577}
+        m_TargetAssemblyTypeName: ModuleManager, Assembly-CSharp
+        m_MethodName: SelectModule
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1302,6 +1302,7 @@ MonoBehaviour:
   - {fileID: 6397140377576828757, guid: 680bac468aedfba40a954f4c63d3cd9c, type: 3}
   - {fileID: 5463552377183843259, guid: 2da54d711193f16409b92e11d0732046, type: 3}
   - {fileID: 6257659183064652560, guid: 11627f3e60124a745bcc3a4cbb610342, type: 3}
+  - {fileID: 2855577392121904981, guid: 49723096f9503134f8d228649ac62ccf, type: 3}
 --- !u!4 &589909578
 Transform:
   m_ObjectHideFlags: 0
