@@ -166,10 +166,25 @@ public class Module2Controller : BaseModule
         note = "500 Internal Server Error: the server failed while handling a valid request."
     });
 
+    //public void OnToggleJson()
+    //{
+    //    showJson = !showJson;
+    //    if (finished && lastCall != null) Set(responseText, BuildResponse(lastCall));
+    //}
     public void OnToggleJson()
     {
         showJson = !showJson;
-        if (finished && lastCall != null) Set(responseText, BuildResponse(lastCall));
+
+        if (lastCall == null)
+        {
+            Set(statusText, "Send a request first, then press Show JSON.");
+            return;
+        }
+
+        if (finished)
+            Set(responseText, BuildResponse(lastCall));
+        else
+            Set(statusText, "JSON will appear when the response arrives.");
     }
 
     public void OnReplay()
