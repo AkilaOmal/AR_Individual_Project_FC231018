@@ -38,7 +38,7 @@ public class ModuleManager : MonoBehaviour
     [SerializeField] PlacementController placement;
     [SerializeField] BaseModule[] modulePrefabs;   // index 0..4
 
-    public BaseModule Current { get; private set; }
+    public BaseModule Current { get; private set; } = -1;
     public event Action OnSelectionStarted;   // user picked a module, waiting for placement
     public event Action OnModulePlaced;       // module appeared in the world
     public event Action OnReturnedToMenu;
@@ -71,6 +71,7 @@ public class ModuleManager : MonoBehaviour
     {
         if (pendingIndex < 0) return;
         Current = Instantiate(modulePrefabs[pendingIndex], pose.position, pose.rotation);
+        CurrentIndex = pendingIndex;
         Current.OnShown();
         placement.PlacementEnabled = false;
         pendingIndex = -1;
@@ -90,5 +91,6 @@ public class ModuleManager : MonoBehaviour
     void DestroyCurrent()
     {
         if (Current) { Current.OnHidden(); Destroy(Current.gameObject); Current = null; }
+        CurrentIndex = -1;
     }
 }

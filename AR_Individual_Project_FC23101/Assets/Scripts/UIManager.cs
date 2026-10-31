@@ -15,8 +15,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] TMP_Text infoTitle;
     [SerializeField] TMP_Text infoText;
 
-    [Header("Quiz (add later)")]
-    [SerializeField] GameObject quizPanel;   // optional for now
+    [Header("Quiz")]
+    [SerializeField] private QuizPanel quizPanel;
 
     void OnEnable()
     {
@@ -41,7 +41,8 @@ public class UIManager : MonoBehaviour
         hudPanel.SetActive(false);
         infoPanel.SetActive(false);
         hintText.SetActive(false);
-        if (quizPanel) quizPanel.SetActive(false);
+        if (quizPanel != null) quizPanel.gameObject.SetActive(false);
+        //if (quizPanel) quizPanel.SetActive(false);
     }
 
     void ShowPlacing()
@@ -71,9 +72,17 @@ public class UIManager : MonoBehaviour
 
     public void OnCloseInfo() => infoPanel.SetActive(false);
 
+    //public void OnQuizPressed()
+    //{
+    //    if (quizPanel == null) { Debug.Log("Quiz not built yet."); return; }
+    //    quizPanel.SetActive(true);
+    //}
     public void OnQuizPressed()
     {
-        if (quizPanel == null) { Debug.Log("Quiz not built yet."); return; }
-        quizPanel.SetActive(true);
+        if (moduleManager.Current == null) return;      // place a module first
+        if (quizPanel == null) { Debug.Log("Quiz panel is not assigned."); return; }
+
+        infoPanel.SetActive(false);
+        quizPanel.Open(moduleManager.CurrentIndex);
     }
 }
